@@ -40,6 +40,7 @@
 # - this is the IGDM base address - fill in below
 
 BIOS_VERSION="UX32VD.206"
+TOTAL_MEMORY="9937592"
 DMIDECODE_BIOS_VERSION="bios-version"
 function usage {
     echo "usage: ./fixbacklight.sh <start | shutdown>"
@@ -48,6 +49,12 @@ function usage {
 function bios_version_check {
     bios_version_found=$(dmidecode -s $DMIDECODE_BIOS_VERSION)
     test $bios_version_found != $BIOS_VERSION
+    return $?
+}
+
+function memcheck {
+    mem_found=$(grep -i memtotal /proc/meminfo  | cut -d ' ' -f 9)
+    test $mem_found != $TOTAL_MEMORY
     return $?
 }
 
@@ -63,6 +70,12 @@ if [ $? -ne 1 ]; then
     exit -1
 fi
 
+#memcheck guard
+memcheck
+if [ $? -ne 1 ]; then
+    echo "Warning!!!, possible bug detected. Memory size doesn't match, found $mem_found kB, but expected $TOTAL_MEMORY kB" > /dev/stderr
+    exit -1
+fi
 
 IGDM_BASE=0xBE8B7018
 DIDL_OFFSET=0x120
@@ -89,3 +102,4 @@ else
     usage
     exit -1
 fi
+
