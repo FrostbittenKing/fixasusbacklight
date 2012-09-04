@@ -39,6 +39,11 @@
 # - cat /proc/acpi/call
 # - this is the IGDM base address - fill in below
 
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root" 1>&2
+    exit -1
+fi
+
 BIOS_VERSION="UX32VD.206"
 TOTAL_MEMORY="9937592"
 DMIDECODE_BIOS_VERSION="bios-version"
@@ -58,7 +63,7 @@ function memcheck {
     return $?
 }
 
-if [ -z $1 ]; then 
+if [  $# -ne 1 ]; then 
     usage
     exit -1
 fi
@@ -93,9 +98,9 @@ fi
 # if interested, disasselbe the dsdt to understand, why no notifyevent gets thrown, when CADL isn't initialized 
 # (hint: _Q0E/_Q0F are the backlight methods on the UX32VD)
 action="$1"
-if [ $action = "start" ] ; then
+if [ "$action" = "start" ] ; then
     dd if=/dev/mem skip=$(( $IGDM_BASE + $DIDL_OFFSET )) of=/dev/mem seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32 bs=1
-elif [ $action = "shutdown" ]; then
+elif [ "$action" = "shutdown" ]; then
     perl -e 'print "\x00"x32' | dd of=/dev/mem bs=1 seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32
 else
     echo "action $action unknown" > /dev/stderr
