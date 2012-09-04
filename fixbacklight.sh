@@ -44,6 +44,13 @@ if [[ $EUID -ne 0 ]]; then
     exit -1
 fi
 
+# check for dmidecode
+which dmidecode > /dev/null 2>&1
+if [  $? -ne 0 ]; then
+    echo "Error, dmidecode not found, please install it first" 2> /dev/stderr
+    exit -1    
+fi
+
 BIOS_VERSION="UX32VD.206"
 TOTAL_MEMORY="9937592"
 DMIDECODE_BIOS_VERSION="bios-version"
