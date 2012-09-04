@@ -106,12 +106,26 @@ fi
 # (hint: _Q0E/_Q0F are the backlight methods on the UX32VD)
 action="$1"
 if [ "$action" = "start" ] ; then
-    dd if=/dev/mem skip=$(( $IGDM_BASE + $DIDL_OFFSET )) of=/dev/mem seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32 bs=1
+    dd if=/dev/mem skip=$(( $IGDM_BASE + $DIDL_OFFSET )) of=/dev/mem seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32 bs=1 > /dev/null 2>&1
+    status=$?
+    if [ $status -eq 0 ]; then
+	echo "CADL region successfully initialized"
+	exit 0
+    fi
 elif [ "$action" = "shutdown" ]; then
-    perl -e 'print "\x00"x32' | dd of=/dev/mem bs=1 seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32
+    perl -e 'print "\x00"x32' | dd of=/dev/mem bs=1 seek=$(( $IGDM_BASE + $CADL_OFFSET )) count=32 > /dev/null 2>&1
+    status=$?
+    if [ $status -eq 0 ]; then
+	echo "CADL region successfully prepared for shutdown"
+	exit 0
+    fi
 else
     echo "action $action unknown" > /dev/stderr
     usage
     exit -1
 fi
 
+if [ $status -ne 0 ]; then
+    echo "Error!!, couldn't initialize CADL"
+    exit -1
+fi
