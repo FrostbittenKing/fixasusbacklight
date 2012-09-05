@@ -39,13 +39,14 @@ Extrating the DIDL/CADL Offsets:
     this should create some files, one beeing something like dsdt.dsl (the file with .dsl is the important file)
  3. find the IGDM opregion in this file. This should look something like this:
 
- OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
- Field (IGDM, AnyAcc, NoLock, Preserve)
- {
-     SIGN,   128, 
-     SIZE,   32, 
-     OVER,   32, 
-     ...
+
+    OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
+    Field (IGDM, AnyAcc, NoLock, Preserve)
+    {
+	SIGN,   128, 
+    	SIZE,   32, 
+    	OVER,   32, 
+    	...
 
 
  4. The numbers represent the size of each element in bits. Add all numbers until you reach the DIDL and CADL 
