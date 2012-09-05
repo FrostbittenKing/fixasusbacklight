@@ -54,3 +54,9 @@ Extrating the DIDL/CADL Offsets:
     this offset (don't forget this offset is in bytes, not bits). 
  5. Fill the DIDL/CADL offsets with the calculated values.
  6. *Thumbs pressed* that it works
+
+How to execute:
+ * chmod +x fixbacklight.sh
+ * sudo ./fixbacklight.sh <start | shutdown> 
+ * optionally copy to /usr/local/share and let it execute by /etc/rc.local
+ * on shutdown ./fixbacklight.sh shutdown (since it apprently causes some strange bug - sometimes the harddrive doesn't get detected on the next softreboot - idfk why). - add it to /etc/rc.shutdown
