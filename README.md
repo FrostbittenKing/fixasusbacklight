@@ -50,7 +50,7 @@ Extrating the DIDL/CADL Offsets:
 
 
  4. The numbers represent the size of each element in bits. Add all numbers until you reach the DIDL and CADL 
-    offset. If you encounter something like `offset(120)` you can throw away the calculated value and continue with
+    offset. If you encounter something like `offset(0x120)` you can throw away the calculated value and continue with
     this offset (don't forget this offset is in bytes, not bits). 
  5. Fill the DIDL/CADL offsets with the calculated values.
  6. *Thumbs pressed* that it works
