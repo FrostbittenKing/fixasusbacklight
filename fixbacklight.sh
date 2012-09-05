@@ -21,16 +21,18 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-# Asus UX32VD acpi backlight fix
-# Disclaimer!!!! not recommended to use if laptop is not the Asus UX32VD
+# Asus UX31A/32VD acpi backlight fix
+# (Disclaimer!!!! not recommended to use if laptop is not the Asus UX32VD
 # probably works with other models too, but the didl and cadl offset needs to be extracted
-# from the dsdt
+# from the dsdt)
+# Update: Apparently works 1:1 on the Asus UX31A bios 2.06 without changes, IGDM base-address differs on previous bios version(v 2.04)
+# will most certainly change with the next bios update, so beware
 # Tested with bios 2.06
 
-# IGDM_BASE has to be determined for each notebook
+# IGDM_BASE has to be determined for each notebook model (except UX31A and UX32VD bios 2.06, address is already known on these models)
 # IGDM is the operation region (\_SB_.PCI0.GFX0.IGDM) containing the CADL/DIDL fields
 # \aslb is a named field containing the base-address of the IGDM region
-# this address depends on the installed ram
+# this address is influenced by the bios version, and maybe somehow by the installed ram (I don't know yet)
 # how to get the address:
 # - git clone git://github.com/Bumblebee-Project/acpi_call.git
 # - make
@@ -38,6 +40,24 @@
 # - echo '\aslb' > /proc/acpi/call
 # - cat /proc/acpi/call
 # - this is the IGDM base address - fill in below
+
+# Known IGDM Base Addresses
+# Asus UX31A v2.06:    0xBE8B7018
+# Asus UX32VD v2.06:   0xBE8B7018
+
+# Known DIDL/CADL Offsets
+# Asus UX31A v2.06:  DIDL: 0x120, CADL: 0x160 
+# Asus UX32VD v2.06: DIDL: 0x120, CADL: 0x160 
+
+IGDM_BASE=0xBE8B7018
+DIDL_OFFSET=0x120
+CADL_OFFSET=0x160
+
+#bios version check, change according to installed bios version
+BIOS_VERSION="UX32VD.206"
+#irrelevant for now
+#TOTAL_MEMORY="9937592"
+DMIDECODE_BIOS_VERSION="bios-version"
 
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root" 1>&2
@@ -51,9 +71,6 @@ if [  $? -ne 0 ]; then
     exit -1    
 fi
 
-BIOS_VERSION="UX32VD.206"
-TOTAL_MEMORY="9937592"
-DMIDECODE_BIOS_VERSION="bios-version"
 function usage {
     echo "usage: ./fixbacklight.sh <start | shutdown>"
 }
@@ -75,23 +92,21 @@ if [  $# -ne 1 ]; then
     exit -1
 fi
 
-# Bios Version guard
+# Bios Version guard, base-address is influenced by bios version
 bios_version_check
 if [ $? -ne 1 ]; then
     echo "Warning!!!, possible bug detected. Bios version does not match, please verify" > /dev/stderr
     exit -1
 fi
 
+# this didn't work as intended, and apparently the base address is the same on the ux31a and the ux32vd with bios 2.06
+# until I determine, how the base-address is influenced by the installed ram (if at all), this check is disabled
 #memcheck guard
-memcheck
-if [ $? -ne 1 ]; then
-    echo "Warning!!!, possible bug detected. Memory size doesn't match, found $mem_found kB, but expected $TOTAL_MEMORY kB" > /dev/stderr
-    exit -1
-fi
-
-IGDM_BASE=0xBE8B7018
-DIDL_OFFSET=0x120
-CADL_OFFSET=0x160
+#memcheck
+#if [ $? -ne 1 ]; then
+#    echo "Warning!!!, possible bug detected. Memory size doesn't match, found $mem_found kB, but expected $TOTAL_MEMORY kB" > /dev/stderr
+#    exit -1
+#fi
 
 # check if IGDM_BASE is initialized
 if [ -z $IGDM_BASE ]; then
