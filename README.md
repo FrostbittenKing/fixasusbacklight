@@ -68,7 +68,7 @@ offsets. Currently the script has a bios check to stop execution if the bios str
 Extrating the DIDL/CADL Offsets:
 
  1. dump the bios with acpidump to file
- 2. extract dsdt tables with acpixtract <file>
+ 2. extract dsdt tables with acpixtract &lt;file&gt;
     this should create some files, one beeing something like dsdt.dsl (the file with .dsl is the important file)
  3. find the IGDM opregion in this file. This should look something like this:
 
@@ -90,6 +90,6 @@ Extrating the DIDL/CADL Offsets:
 
 How to execute:
  * chmod +x fixbacklight.sh
- * sudo ./fixbacklight.sh <start | shutdown> 
+ * sudo ./fixbacklight.sh &lt;start | shutdown&gt; 
  * optionally copy to /usr/local/share and let it execute by /etc/rc.local
  * on shutdown ./fixbacklight.sh shutdown (since it apprently causes some strange bug - sometimes the harddrive doesn't get detected on the next softreboot - idfk why). - add it to /etc/rc.shutdown
