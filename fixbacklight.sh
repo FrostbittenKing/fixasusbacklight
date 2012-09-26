@@ -41,14 +41,6 @@
 # - cat /proc/acpi/call
 # - this is the IGDM base address - fill in below
 
-# Known IGDM Base Addresses
-# Asus UX31A v2.06:    0xBE8B7018
-# Asus UX32VD v2.06:   0xBE8B7018
-
-# Known DIDL/CADL Offsets
-# Asus UX31A v2.06:  DIDL: 0x120, CADL: 0x160 
-# Asus UX32VD v2.06: DIDL: 0x120, CADL: 0x160 
-
 IGDM_BASE=0xBE8B7018
 DIDL_OFFSET=0x120
 CADL_OFFSET=0x160

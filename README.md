@@ -16,13 +16,46 @@ How to use acpi_call:
  * cat /proc/acpi/call
  * this is the IGDM base address - fill in the IGDM_BASE variable in the script
 
-Known IGDM Base Addresses
- * Asus UX31A v2.06:    0xBE8B7018
- * Asus UX32VD v2.06:   0xBE8B7018
+<h2>Known IDGM Base Addresses</h2>
 
-Known DIDL/CADL Offsets
- * Asus UX31A v2.06:  DIDL: 0x120, CADL: 0x160 
- * Asus UX32VD v2.06: DIDL: 0x120, CADL: 0x160 
+<table border="1">
+       <tr>
+        <th>Bios Version</th>
+	<th>Asus UX31A</th>
+	<th>Asus UX32VD</th>
+       </tr>
+       <tr>
+	<td>2.06</td>
+	<td>0xBE8B7018</td>
+	<td>0xBE8B7018</td>
+       </tr>
+       <tr>
+	<td>2.11</td>
+	<td>0xDA8A9018</td>
+	<td>0xCA882018</td>
+       </tr>
+</table>
+
+<h2>Known DIDL/CADL Offsets</h2>
+
+<table border="1">
+       <tr>
+	<th>Bios Version</th>
+	<th>Asus UX31A</th>
+	<th>Asus UX32VD</th>
+       </tr>
+       <tr align="center">
+	<td>2.06</td>
+	<td>0x120 / 0x160</td>
+	<td>0x120 / 0x160</td>
+       </tr>
+       <tr align="center">
+	<td>2.11</td>
+	<td>&ndash;||&ndash;</td>
+	<td>&ndash;||&ndash;</td>
+       </tr>
+       
+</table>
 
 IGDM base address probably differs with each bios version.
 
