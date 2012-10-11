@@ -34,6 +34,11 @@ How to use acpi_call:
 	<td>0xDA8A9018</td>
 	<td>0xCA882018</td>
        </tr>
+       <tr>
+	<td>2.12</td>
+	<td>???</td>
+	<td>0xCA882018</td>
+       </tr>
 </table>
 
 <h2>Known DIDL/CADL Offsets</h2>
@@ -48,6 +53,11 @@ How to use acpi_call:
 	<td>2.06</td>
 	<td>0x120 / 0x160</td>
 	<td>0x120 / 0x160</td>
+       </tr>
+       <tr align="center">
+	<td>2.11</td>
+	<td>&ndash;||&ndash;</td>
+	<td>&ndash;||&ndash;</td>
        </tr>
        <tr align="center">
 	<td>2.11</td>
