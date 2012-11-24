@@ -21,27 +21,38 @@ How to use acpi_call:
 <table border="1">
        <tr>
         <th>Bios Version</th>
+        <th>Asus UX31E</th>
 	<th>Asus UX31A</th>
 	<th>Asus UX32VD</th>
 	<th>Asus N56VZ</th>
        </tr>
        <tr>
 	<td>2.06</td>
+        <td/>
 	<td>0xBE8B7018</td>
 	<td>0xBE8B7018</td>
 	<td>???</td>
        </tr>
        <tr>
 	<td>2.11</td>
+        <td/>
 	<td>0xDA8A9018</td>
 	<td>0xCA882018</td>
 	<td>0xCA876018</td>
        </tr>
        <tr>
 	<td>2.12</td>
+        <td/>
 	<td>???</td>
 	<td>0xCA882018</td>
 	<td>???</td>
+       </tr>
+       <tr>
+        <td>2.14</td>
+        <td>0xBAE79018</td>
+        <td/>
+        <td/>
+        <td/>
        </tr>
 </table>
 
@@ -50,27 +61,38 @@ How to use acpi_call:
 <table border="1">
        <tr>
 	<th>Bios Version</th>
+        <th>Asus UX31E</th>
 	<th>Asus UX31A</th>
 	<th>Asus UX32VD</th>
 	<th>Asus N56VZ</th>
        </tr>
        <tr align="center">
 	<td>2.06</td>
+        <td/>
 	<td>0x120 / 0x160</td>
 	<td>0x120 / 0x160</td>
 	<td>???</td>
        </tr>
        <tr align="center">
 	<td>2.11</td>
+        <td/>
 	<td>&ndash;||&ndash;</td>
 	<td>&ndash;||&ndash;</td>
 	<td>???</td>
        </tr>
        <tr align="center">
 	<td>2.11</td>
+        <td/>
 	<td>&ndash;||&ndash;</td>
 	<td>&ndash;||&ndash;</td>
 	<td>???</td>
+       </tr>
+       <tr align="center">
+         <td>2.14</td>
+         <td>0x120 / 0x160</td>
+         <td/>
+         <td/>
+         <td/>
        </tr>
        
 </table>
