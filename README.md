@@ -24,11 +24,13 @@ How to use acpi_call:
 	<th>Asus UX31A</th>
 	<th>Asus UX32VD</th>
 	<th>Asus N56VZ</th>
+	<th>Asus N56VM</th>
        </tr>
        <tr>
 	<td>2.06</td>
 	<td>0xBE8B7018</td>
 	<td>0xBE8B7018</td>
+	<td>???</td>
 	<td>???</td>
        </tr>
        <tr>
@@ -36,12 +38,21 @@ How to use acpi_call:
 	<td>0xDA8A9018</td>
 	<td>0xCA882018</td>
 	<td>0xCA876018</td>
+	<td>???</td>
        </tr>
        <tr>
 	<td>2.12</td>
 	<td>???</td>
 	<td>0xCA882018</td>
 	<td>???</td>
+	<td>???</td>
+       </tr>
+       <tr>
+	<td>2.14</td>
+	<td>???</td>
+	<td>???</td>
+	<td>???</td>
+	<td>0xAE87E018</td>
        </tr>
 </table>
 
@@ -53,23 +64,34 @@ How to use acpi_call:
 	<th>Asus UX31A</th>
 	<th>Asus UX32VD</th>
 	<th>Asus N56VZ</th>
+	<th>Asus N56VM</th>
        </tr>
        <tr align="center">
 	<td>2.06</td>
 	<td>0x120 / 0x160</td>
 	<td>0x120 / 0x160</td>
 	<td>???</td>
-       </tr>
-       <tr align="center">
-	<td>2.11</td>
-	<td>&ndash;||&ndash;</td>
-	<td>&ndash;||&ndash;</td>
 	<td>???</td>
        </tr>
        <tr align="center">
 	<td>2.11</td>
 	<td>&ndash;||&ndash;</td>
 	<td>&ndash;||&ndash;</td>
+	<td>???</td>
+	<td>???</td>
+       </tr>
+       <tr align="center">
+	<td>2.11</td>
+	<td>&ndash;||&ndash;</td>
+	<td>&ndash;||&ndash;</td>
+	<td>???</td>
+	<td>???</td>
+       </tr>
+       <tr align="center">
+	<td>2.14</td>
+	<td>???</td>
+	<td>???</td>
+	<td>???</td>
 	<td>???</td>
        </tr>
        
