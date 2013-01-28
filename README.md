@@ -81,7 +81,7 @@ How to use acpi_call:
 	<td>???</td>
        </tr>
        <tr align="center">
-	<td>2.11</td>
+	<td>2.12</td>
         <td/>
 	<td>&ndash;||&ndash;</td>
 	<td>&ndash;||&ndash;</td>
