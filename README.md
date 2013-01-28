@@ -35,7 +35,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>???</td>
 	<td>???</td>
-	<td>0xca861018</td>
+	<td>0xCA861018</td>
        </tr>
        <tr>
 	<td>2.06</td>
