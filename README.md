@@ -52,6 +52,14 @@ How to use acpi_call:
 	<td>???</td>
        </tr>
        <tr>
+	<td>2.13</td>
+	<td>???</td>
+	<td>???</td>
+	<td>0xCA889018</td>
+	<td>???</td>
+	<td>???</td>
+       </tr>
+       <tr>
 	<td>2.14</td>
 	<td>0xBAE79018</td>
 	<td>???</td>
@@ -92,6 +100,14 @@ How to use acpi_call:
 	<td>2.12</td>
 	<td>???</td>
         <td>&ndash;||&ndash;</td>
+	<td>&ndash;||&ndash;</td>
+	<td>???</td>
+	<td>???</td>
+       </tr>
+       <tr align="center">
+	<td>2.13</td>
+	<td>???</td>
+        <td>???</td>
 	<td>&ndash;||&ndash;</td>
 	<td>???</td>
 	<td>???</td>
