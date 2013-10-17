@@ -1,8 +1,8 @@
 fixasusbacklight
 ================
 
-This is a little tool to fix the ux31a/ux32vd acpi backlight buttons during runtime
-It patches the IGDM opregion mapped into virtual memory during runtime to fix the not working backlight control
+This is a little tool to fix the ux31a/ux32vd acpi backlight buttons during runtime.
+It patches the IGDM opregion mapped into virtual memory during runtime to fix the backlight control
 buttons on the UX31A/UX32VD zenbooks.
 
 Requirements:
@@ -156,16 +156,16 @@ IGDM base address probably differs with each bios version.
 
 Problems:
 
-If this script produces a kernel panic, its most likely that the bios version doesn't match the baseaddress and/ or
-offsets. Currently the script has a bios check to stop execution if the bios string returned by 
+If this script produces a kernel panic, it's most likely that the bios version doesn't match the baseaddress and/or
+offsets. Currently, the script has a bios check to stop execution if the bios string returned by 
 `dmidecode -s bios-version` doesn't match the BIOS_VERSION variable in the script (so change according to your bios)
 
-Extrating the DIDL/CADL Offsets:
+Extracting the DIDL/CADL Offsets:
 
- 1. dump the bios with acpidump to file
- 2. extract dsdt tables with acpixtract &lt;file&gt;
-    this should create some files, one beeing something like dsdt.dsl (the file with .dsl is the important file)
- 3. find the IGDM opregion in this file. This should look something like this:
+ 1. Dump the bios with acpidump to file
+ 2. Extract dsdt tables with acpixtract &lt;file&gt;
+    this should create some files, one being something like dsdt.dsl (the file with .dsl is the important file)
+ 3. Find the IGDM opregion in this file. This should look something like this:
 
 
         OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
@@ -181,10 +181,10 @@ Extrating the DIDL/CADL Offsets:
     offset. If you encounter something like `offset(0x120)` you can throw away the calculated value and continue with
     this offset (don't forget this offset is in bytes, not bits). 
  5. Fill the DIDL/CADL offsets with the calculated values.
- 6. *Thumbs pressed* that it works
+ 6. *Fingers Crossed* that it works
 
 How to execute:
  * chmod +x fixbacklight.sh
  * sudo ./fixbacklight.sh &lt;start | shutdown&gt; 
- * optionally copy to /usr/local/share and let it execute by /etc/rc.local
- * on shutdown ./fixbacklight.sh shutdown (since it apprently causes some strange bug - sometimes the harddrive doesn't get detected on the next softreboot - idfk why). - add it to /etc/rc.shutdown
+ * optionally, copy to /usr/local/share and let it execute by /etc/rc.local
+ * on shutdown ./fixbacklight.sh shutdown (since it apparently causes some strange bug - sometimes the harddrive doesn't get detected on the next softreboot - idfk why). - add it to /etc/rc.shutdown
