@@ -6,10 +6,12 @@ It patches the IGDM opregion mapped into virtual memory during runtime to fix th
 buttons on the UX31A/UX32VD zenbooks.
 
 Requirements:
+
  * dmidecode (used to check against bios version
  * [acpi_call](https://github.com/Bumblebee-Project/acpi_call) to extract the IGDM Base address
 
 How to use acpi_call:
+
  * download and compile acpi_call with make
  * load module with insmod or with copying to /lib/modules/... and modprobe it
  * echo '\aslb' > /proc/acpi/call
@@ -96,7 +98,7 @@ How to use acpi_call:
 	<th>Asus N56VM</th>
 	<th>Asus UX51VZ(A)</th>
        </tr>
-       <tr align="center">
+       <tr>
 	<td>2.03</td>
 	<td>???</td>
         <td>???</td>
@@ -105,7 +107,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>0x120 / 0x160</td>
        
-       <tr align="center">
+       <tr>
 	<td>2.06</td>
 	<td>???</td>
         <td>0x120 / 0x160</td>
@@ -114,7 +116,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>???</td>
        </tr>
-       <tr align="center">
+       <tr>
 	<td>2.11</td>
 	<td>???</td>
         <td>&ndash;||&ndash;</td>
@@ -123,7 +125,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>???</td>
        </tr>
-       <tr align="center">
+       <tr>
 	<td>2.12</td>
 	<td>???</td>
         <td>&ndash;||&ndash;</td>
@@ -132,7 +134,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>???</td>
        </tr>
-       <tr align="center">
+       <tr>
 	<td>2.13</td>
 	<td>???</td>
         <td>???</td>
@@ -141,7 +143,7 @@ How to use acpi_call:
 	<td>???</td>
 	<td>???</td>
        </tr>
-       <tr align="center">
+       <tr>
 	<td>2.14</td>
 	<td>0x120 / 0x160</td>
 	<td>???</td>
@@ -167,14 +169,13 @@ Extrating the DIDL/CADL Offsets:
     this should create some files, one beeing something like dsdt.dsl (the file with .dsl is the important file)
  3. find the IGDM opregion in this file. This should look something like this:
 
-
-        OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
-        Field (IGDM, AnyAcc, NoLock, Preserve)
-        {
-		SIGN,   128, 
-        	SIZE,   32, 
-        	OVER,   32, 
-        	...
+             OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
+             Field (IGDM, AnyAcc, NoLock, Preserve)
+                 {
+             	 SIGN,   128,
+             	 SIZE,   32,
+             	 OVER,   32,
+             	 ...
 
 
  4. The numbers represent the size of each element in bits. Add all numbers until you reach the DIDL and CADL 
@@ -184,6 +185,7 @@ Extrating the DIDL/CADL Offsets:
  6. *Thumbs pressed* that it works
 
 How to execute:
+
  * chmod +x fixbacklight.sh
  * sudo ./fixbacklight.sh &lt;start | shutdown&gt; 
  * optionally copy to /usr/local/share and let it execute by /etc/rc.local
